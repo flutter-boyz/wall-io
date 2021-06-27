@@ -1,4 +1,4 @@
-# citr_app
+# wall-io
 
 A new Flutter project.
 
