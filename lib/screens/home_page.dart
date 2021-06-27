@@ -21,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
     for (int i = 0; i < controllers.length; i++) {
       if (i != index) {
         controllers[i].animateToPage(page,
-            duration: Duration(milliseconds: 300), curve: Curves.ease);
+            duration: Duration(milliseconds: 150), curve: Curves.ease);
       }
     }
   }
@@ -73,27 +73,31 @@ class _MyHomePageState extends State<MyHomePage> {
                       if (hits != null) {
                         hit = hits![hitIndex];
                       }
-                      return Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: CachedNetworkImage(
-                            imageUrl: hit?.webformatURL,
-                            // imageUrl:
-                            //     "https://pixabay.com/get/gc5b5182455b4aabbb5fcc7fccd7faf84d112021938a7c92e0c14bbae3cbedb4094e75fc453bc6bc19abaddce57a0c29e5a93e3d3fbdfa250bc540704040bdedf_640.jpg",
-                            fit: BoxFit.cover,
-                          ));
+                      return Card(
+                        color: Colors.grey.shade900,
+                        margin: EdgeInsets.all(6),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16)),
+                        child: CachedNetworkImage(
+                          imageUrl: hit?.webformatURL,
+                          // imageUrl:
+                          //     "https://pixabay.com/get/gc5b5182455b4aabbb5fcc7fccd7faf84d112021938a7c92e0c14bbae3cbedb4094e75fc453bc6bc19abaddce57a0c29e5a93e3d3fbdfa250bc540704040bdedf_640.jpg",
+                          fit: BoxFit.cover,
+                        ),
+                      );
                     });
               },
             )
-          : LoadingIndicator(
-              indicatorType: Indicator.ballScale,
-              color: Colors.white,
+          : Center(
+              child: Container(
+                width: 100,
+                height: 100,
+                child: LoadingIndicator(
+                  indicatorType: Indicator.ballScale,
+                  color: Colors.white,
+                ),
+              ),
             ),
-
-      // child: CachedNetworkImage(
-      //   imageUrl: hit!.webformatURL ??
-      //       "https://pixabay.com/get/gc5b5182455b4aabbb5fcc7fccd7faf84d112021938a7c92e0c14bbae3cbedb4094e75fc453bc6bc19abaddce57a0c29e5a93e3d3fbdfa250bc540704040bdedf_640.jpg",
-      //   fit: BoxFit.cover,
-      // ),
     );
   }
 }
